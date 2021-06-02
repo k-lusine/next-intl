@@ -1,0 +1,13 @@
+phrase:
+  access_token: ${PHRASE_ACCESS_TOKEN}
+  project_id: ${PHRASE_PROJECT_ID}
+  push:
+    sources:
+    - file: ./data/phrases/<locale_name>.json
+      params:
+        file_format: react_nested_json
+  pull:
+    targets:
+    - file: ./data/phrases/p/<locale_name>.json
+      params:
+        file_format: react_nested_json
