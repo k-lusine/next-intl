@@ -2,7 +2,7 @@ import merge from "lodash.merge";
 import { useRouter } from "next/dist/client/router";
 import { useEffect, useState } from "react"
 
-export default  () => {
+const useTranslations = () => {
   const [messages, setMessages] = useState(null);
   const localeInfo = useRouter();
   const currentLocale = localeInfo.locale || 'en-US';
@@ -22,3 +22,5 @@ export default  () => {
 
     return {messages, currentLocale, defaultLocale};
 }
+
+export default useTranslations;
