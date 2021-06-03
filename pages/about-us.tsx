@@ -4,6 +4,7 @@ import useTranslations from '../hooks/useTranslations'
 
 export default function Home() {
   const {messages, currentLocale, defaultLocale} = useTranslations();
+  
   return (
     messages ? <IntlProvider messages={messages||{}} locale={currentLocale} defaultLocale={defaultLocale}>
     <div className={styles.container}>

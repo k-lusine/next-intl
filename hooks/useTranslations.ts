@@ -9,9 +9,8 @@ const useTranslations = () => {
   const defaultLocale = localeInfo.defaultLocale;
   
   useEffect(() => {
-    (async () => {
+    (async () => {      
       const currentMessages = await import(`../data/phrases/p/${currentLocale}.json`);
-      console.log(currentMessages, 'currentMessages');
       
       const defaultMessages = await import(`../data/phrases/p/${defaultLocale}.json`);
       const messages = merge(defaultMessages.default, currentMessages.default);
