@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev -p 3001",
+    "setup": "phrase:setup",
+    "phrase:setup": "wget https://github.com/phrase/phrase-cli/releases/download/2.1.6/phrase_linux_amd64 && sudo chmod +x phrase_linux_amd64 && sudo mv phrase_linux_amd64 /usr/local/bin/phrase",
     "build": "next build",
     "start": "next start",
     "fetch:translations": "envsub  --env-file .env.local ./.phrase-template.yml ./.phrase.yml && phrase pull",
-    "fetch:translations:ci": "envsub ./.phrase-template.yml ./.phrase.yml && phrase pull"
+    "fetch:translations:ci": "envsub ./.phrase-template.yml ./.phrase.yml && phrase pull" 
   },
   "dependencies": {
     "envsub": "^4.0.7",
