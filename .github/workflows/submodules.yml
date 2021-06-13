@@ -19,3 +19,5 @@ jobs:
           submodules: true
           persist-credentials: false
           token: ${{secrets.PERSONAL_ACCESS_TOKEN}}
+      - name: Deploy to Vercel
+        run: yarn vercel --prod
