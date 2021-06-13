@@ -1,4 +1,4 @@
 [submodule "configs"]
 	path = configs
-	url = git@github.com:k-lusine/forum.git
+	url = https://github.com/k-lusine/forum.git
 	branch = master
