@@ -4,7 +4,7 @@ import configs from '../country-config/config.json';
 export default function Readme({date}: {date: string}) {
   return (
     <div className={styles.container}>
-      <h1>Content from github</h1>
+      <h1>Content from github (updated)</h1>
       <p>The content below is powered from Github repo. Feel free to edit <a href="https://github.com/k-lusine/country-config"> this file</a> and refresh the page</p>
       <pre>{JSON.stringify(configs)}</pre>
 
