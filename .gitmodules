@@ -1,4 +1,4 @@
-[submodule "configs"]
-	path = configs
-	url = https://github.com/k-lusine/forum.git
-	branch = master
+[submodule "config"]
+	path = config
+	url = https://github.com/k-lusine/country-config.git
+	branch = main
