@@ -1,4 +1,0 @@
-[submodule "config"]
-	path = config
-	url = https://github.com/k-lusine/country-config.git
-	branch = main
