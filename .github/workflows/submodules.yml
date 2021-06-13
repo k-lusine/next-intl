@@ -19,5 +19,7 @@ jobs:
           submodules: true
           persist-credentials: false
           token: ${{secrets.PERSONAL_ACCESS_TOKEN}}
+      - name: Install Vercel cli
+        run: yarn global add vercel
       - name: Deploy to Vercel
-        run: yarn vercel --prod
+        run: vercel --prod
