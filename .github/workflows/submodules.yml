@@ -22,4 +22,4 @@ jobs:
       - name: Install Vercel cli
         run: yarn global add vercel
       - name: Deploy to Vercel
-        run: vercel --prod
+        run: vercel --prod --token ${{secrets.VERCEL_TOKEN}}
