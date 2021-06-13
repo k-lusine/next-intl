@@ -7,7 +7,7 @@ const git: SimpleGit = simpleGit();
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   
 const options: Partial<SimpleGitOptions> = {
-  baseDir: path.join(process.cwd(), 'data', 'forum'),
+  baseDir: path.join(process.cwd(), 'country-config'),
   binary: 'git',
   maxConcurrentProcesses: 6,
 };
@@ -15,8 +15,8 @@ const payload = JSON.parse(req.body?.payload);
 debugger;
 const git: SimpleGit = simpleGit(options);
 
-  if (payload?.ref === 'refs/heads/master') {
-      await git.pull('origin', 'master');
+  if (payload?.ref === 'refs/heads/main') {
+      await git.pull('origin', 'main');
   }
  return res.status(200).json({success: true})
 }
