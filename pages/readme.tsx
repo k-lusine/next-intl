@@ -5,10 +5,10 @@ export default function Readme({date}: {date: string}) {
   return (
     <div className={styles.container}>
       <h1>Content from github</h1>
-      <p>The content below is powered from Github repo. Feel free to edit <a href="https://github.com/k-lusine/forum/blob/master/config.json"> this file</a> and refresh the page</p>
+      <p>The content below is powered from Github repo. Feel free to edit <a href="https://github.com/k-lusine/country-config"> this file</a> and refresh the page</p>
       <pre>{JSON.stringify(configs)}</pre>
 
-      <div>This page uses incremental SSG. Last updated on {date}</div>
+      <div>This page uses incremental SSG. Updated every 10secs. Last updated at: <strong>{date}</strong></div>
       </div>
   )
 }
