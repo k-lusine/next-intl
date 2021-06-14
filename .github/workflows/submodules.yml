@@ -19,7 +19,7 @@ jobs:
           submodules: true
           # persist-credentials: false
           token: ${{secrets.PERSONAL_ACCESS_TOKEN}}
-      - name: Update submodules with latest has
+      - name: Update submodules with latest hash
         run: git submodule update --remote
       - name: Install Vercel cli
         run: yarn global add vercel
