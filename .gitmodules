@@ -2,3 +2,7 @@
 	path = country-config
 	url = git@github.com:k-lusine/country-config.git
 	branch = main
+[submodule "country-config-gitlab"]
+	path = country-config-gitlab
+	url = git@gitlab.com:k-lusine/country-config-gitlab.git
+	branch = main
