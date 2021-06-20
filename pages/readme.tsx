@@ -1,5 +1,5 @@
 import styles from '../styles/Home.module.css';
-import configs from '../country-config/config.json';
+import configs from '../country-config-gitlab/config.json';
 
 export default function Readme({date}: {date: string}) {
   return (
