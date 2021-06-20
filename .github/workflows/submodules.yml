@@ -20,6 +20,7 @@ jobs:
           submodules: true
           # persist-credentials: false
           ssh-key: ${{secrets.DEPLOY_SSH_KEY}}
+          ssh-known-hosts: 'gitlab.com'
       - name: Update submodules with latest hash
         run: git submodule update --remote
       - name: Install Vercel cli
