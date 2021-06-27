@@ -67,7 +67,7 @@ jobs:
              echo $PREVIEW_CHECK,
              echo esgsgsdg,
              echo $PREVIEW_CHECK | jq '.id',
-             CHECK_ID="$(echo $PREVIEW_CHECK | jq '.id')",
+             CHECK_ID=$(echo $PREVIEW_CHECK | jq '.id'),
              curl --location --request PATCH "https://api.github.com/repos/k-lusine/next-intl/check-runs${CHECK_ID}" --header "Accept:application/vnd.github.v3+json" --header 'Content-Type:application/json' --user 'k-lusine:${{secrets.GITHUB_TOKEN}}' --data-raw '{"details_url":"https://www.google.com"}'
 
 
