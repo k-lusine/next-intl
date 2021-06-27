@@ -4,7 +4,7 @@ name: Linttttttttttttttttt
 
 # Controls when the action will run. 
 on:
-  push:
+  pull_request:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -15,10 +15,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v2
-      - uses: LouisBrunner/checks-action@v1.1.1
-        if: always()
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          name: Preview url
-          conclusion: ${{ job.status }}
-          details_url: https://www.google.com
+      - name: Run id
+        run: echo ${{github}}
+      - name: Run number
+        run: echo ${{github.run_number}}
+        run: curl --location --request PATCH 'https://api.github.com/repos/k-lusine/next-intl/check-runs/' --header "Accept:application/vnd.github.v3+json" --header 'Content-Type:application/json' --user 'k-lusine:${{secrets.GITHUB_TOKEN}}' --data-raw '{"check_run_id":"2925633398"}'
