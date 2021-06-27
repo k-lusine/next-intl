@@ -21,4 +21,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           name: Preview url
           conclusion: ${{ job.status }}
-          details_url: https://www.google.com
+          actions_url: https://www.google.com
