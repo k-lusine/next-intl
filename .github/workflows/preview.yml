@@ -19,7 +19,7 @@ jobs:
         if: always()
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: Test XYZ
+          name: Preview url
           conclusion: ${{ job.status }}
           output: |
-            {"summary":"d"}
+            {"details_url":"https://www.google.com"}
