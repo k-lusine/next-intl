@@ -60,7 +60,7 @@ jobs:
         # run: echo "$MATRIX_CONTEXT"
       - name: Create check     
         run: |
-            apt-get -y install jq,
+            apt-get install jq,
             PREVIEW_CHECK=$(curl --location --request POST 'https://api.github.com/repos/k-lusine/next-intl/check-runs' --header "Accept:application/vnd.github.v3+json" --header 'Content-Type:application/json' --user 'k-lusine:${{secrets.GITHUB_TOKEN}}' --data-raw '{"details_url":"https://www.google.com", "name":"Preview Url", "head_sha":"${{github.sha}}" }' | jq '.id' ) ,
             echo $PREVIEW_CHECK,
             curl --location --request PATCH 'https://api.github.com/repos/k-lusine/next-intl/check-runs${PREVIEW_CHECK}' --header "Accept:application/vnd.github.v3+json" --header 'Content-Type:application/json' --user 'k-lusine:${{secrets.GITHUB_TOKEN}}' --data-raw '{"details_url":"https://www.google.com"}',
