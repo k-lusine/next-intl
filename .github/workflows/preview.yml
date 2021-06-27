@@ -15,6 +15,17 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v2
-      - name: dgsdgsdgsdgsd
+      - name: Run id
         run: echo ${{github.run_id}}
-        # run: curl --location --request POST 'https://api.github.com/repos/k-lusine/next-intl/actions/workflows/submodules.yml/dispatches' --header "Accept:application/vnd.github.v3+json" --header 'Content-Type:application/json' --user 'k-lusine:${{secrets.PAT_TOKEN}}' --data-raw '{"ref":"main"}'
+      - name: Run number
+        run: echo ${{github.run_number}}
+        # run: curl --location --request POST 'https://api.github.com/repos/k-lusine/next-intl/check-runs' --header "Accept:application/vnd.github.v3+json" --header 'Content-Type:application/json' --user 'k-lusine:${{secrets.PAT_TOKEN}}' --data-raw '{"ref":"main"}'
+            - uses: actions/create-outputs@v0.0.0-fake
+      - uses: LouisBrunner/checks-action@v1.1.1
+        if: always()
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Test XYZ
+          conclusion: ${{ job.status }}
+          output: |
+            {"summary":xxxxxxxxxxxxxxxxxxxxxxxxxxxx
