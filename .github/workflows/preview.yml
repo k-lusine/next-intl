@@ -16,4 +16,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: dgsdgsdgsdgsd
-        run: ./lint.sh
+        run: echo ${{github.run_id}}
+        # run: curl --location --request POST 'https://api.github.com/repos/k-lusine/next-intl/actions/workflows/submodules.yml/dispatches' --header "Accept:application/vnd.github.v3+json" --header 'Content-Type:application/json' --user 'k-lusine:${{secrets.PAT_TOKEN}}' --data-raw '{"ref":"main"}'
