@@ -61,4 +61,4 @@ jobs:
       - name: Install JQ
         run: sudo apt-get install jq
       - name: Create check     
-        run: curl --location --request POST 'https://api.github.com/repos/k-lusine/next-intl/check-runs' --header "Accept:application/vnd.github.v3+json" --header 'Content-Type:application/json' --user 'k-lusine:${{secrets.GITHUB_TOKEN}}' --data-raw '{"name":"Preview Url", "status":"completed", "conclusion":"success", "head_sha":"${{github.sha}}","output":{"title":"[I'm an inline-style link](https://www.google.com)","summary":"[I'm an ddddd-style link](https://www.google.com)"} }'
+        run: curl --location --request POST 'https://api.github.com/repos/k-lusine/next-intl/check-runs' --header "Accept:application/vnd.github.v3+json" --header 'Content-Type:application/json' --user 'k-lusine:${{secrets.GITHUB_TOKEN}}' --data-raw '{"name":"Preview Url", "status":"completed", "conclusion":"success", "head_sha":"${{github.sha}}","output":{"title":"[Im an inline-style link](https://www.google.com)","summary":"[Im an ddddd-style link](https://www.google.com)"} }'
