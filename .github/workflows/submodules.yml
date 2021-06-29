@@ -27,12 +27,12 @@ jobs:
       - name: Install Vercel cli
         run: yarn global add vercel
       - name: Deploy to Vercel (Production Deployment)
-        if: github.ref == 'refs/heads/main'
+        if: github.ref != 'refs/heads/main'
         run: |
-             DEPLOYMENT_URL=$(vercel --prod --token ${{secrets.VERCEL_TOKEN}} 2>$1),
+             DEPLOYMENT_URL=$(vercel --token ${{secrets.VERCEL_TOKEN}} 2>$1),
              echo $DEPLOYMENT_URL
       - name: Deploy to Vercel (Preview Deployment)
-        if: github.ref != 'refs/heads/main'
-        run: vercel --token ${{secrets.VERCEL_TOKEN}}
+        if: github.ref == 'refs/heads/main'
+        run: vercel --prod --token ${{secrets.VERCEL_TOKEN}}
       - name: Create check     
         run: curl --location --request POST 'https://api.github.com/repos/k-lusine/next-intl/check-runs' --header "Accept:application/vnd.github.v3+json" --header 'Content-Type:application/json' --user 'k-lusine:${{secrets.GITHUB_TOKEN}}' --data-raw '{"name":"Preview Url", "status":"completed", "conclusion":"success", "head_sha":"${{github.sha}}","output":{"title":"[Im an inline-style link](https://www.google.com)","summary":"[Im an ddddd-style link](https://www.google.com)"} }'
