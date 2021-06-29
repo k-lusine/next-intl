@@ -16,49 +16,23 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v2
-      #   with:
-      #     submodules: true
-      #     # persist-credentials: false
-      #     ssh-key: ${{secrets.DEPLOY_SSH_KEY}}
-      #     ssh-known-hosts: ${{secrets.SSH_HOSTS}} 
-      #     ssh-strict: 'FALSE'
-      # - name: Update submodules with latest hash
-      #   run: git submodule update --remote
-      # - name: Install Vercel cli
-      #   run: yarn global add vercel
-      # - name: Deploy to Vercel (Production Deployment)
-      #   if: github.ref == 'refs/heads/main'
-      #   run: vercel --prod --token ${{secrets.VERCEL_TOKEN}}
-      # - name: Deploy to Vercel (Preview Deployment)
-      #   if: github.ref != 'refs/heads/main'
-      #   run: vercel --token ${{secrets.VERCEL_TOKEN}}
-      # - name: Run id
-      #   run: echo ${{github}}
-      # - name: Dump GitHub context
-      #   env:
-      #     GITHUB_CONTEXT: ${{ toJSON(github) }}
-      #   run: echo "$GITHUB_CONTEXT"
-      # - name: Dump job context
-      #   env:
-      #     JOB_CONTEXT: ${{ toJSON(job) }}vc
-      #   run: echo "$JOB_CONTEXT"
-      # - name: Dump steps context
-      #   env:
-      #     STEPS_CONTEXT: ${{ toJSON(steps) }}
-      #   run: echo "$STEPS_CONTEXT"
-      # - name: Dump runner context
-      #   env:
-      #     RUNNER_CONTEXT: ${{ toJSON(runner) }}
-      #   run: echo "$RUNNER_CONTEXT"
-      # - name: Dump strategy context
-      #   env:
-      #     STRATEGY_CONTEXT: ${{ toJSON(strategy) }}
-      #   run: echo "$STRATEGY_CONTEXT"
-      # - name: Dump matrix context
-        # env:
-        #   MATRIX_CONTEXT: ${{ toJSON(matrix) }}
-        # run: echo "$MATRIX_CONTEXT"
-      - name: Install JQ
-        run: sudo apt-get install jq
+        with:
+          submodules: true
+          # persist-credentials: false
+          ssh-key: ${{secrets.DEPLOY_SSH_KEY}}
+          ssh-known-hosts: ${{secrets.SSH_HOSTS}} 
+          ssh-strict: 'FALSE'
+      - name: Update submodules with latest hash
+        run: git submodule update --remote
+      - name: Install Vercel cli
+        run: yarn global add vercel
+      - name: Deploy to Vercel (Production Deployment)
+        if: github.ref == 'refs/heads/main'
+        run: |
+             DEPLOYMENT_URL=$(vercel --prod --token ${{secrets.VERCEL_TOKEN}} 2>$1),
+             echo $DEPLOYMENT_URL
+      - name: Deploy to Vercel (Preview Deployment)
+        if: github.ref != 'refs/heads/main'
+        run: vercel --token ${{secrets.VERCEL_TOKEN}}
       - name: Create check     
         run: curl --location --request POST 'https://api.github.com/repos/k-lusine/next-intl/check-runs' --header "Accept:application/vnd.github.v3+json" --header 'Content-Type:application/json' --user 'k-lusine:${{secrets.GITHUB_TOKEN}}' --data-raw '{"name":"Preview Url", "status":"completed", "conclusion":"success", "head_sha":"${{github.sha}}","output":{"title":"[Im an inline-style link](https://www.google.com)","summary":"[Im an ddddd-style link](https://www.google.com)"} }'
