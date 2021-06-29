@@ -29,7 +29,7 @@ jobs:
       - name: Deploy to Vercel (Production Deployment)
         if: github.ref != 'refs/heads/main'
         run: |
-             DEPLOYMENT_URL=$(vercel --token ${{secrets.VERCEL_TOKEN}} 2>"$1"),
+             DEPLOYMENT_URL=$(vercel --token ${{secrets.VERCEL_TOKEN}}),
              echo $DEPLOYMENT_URL
       - name: Deploy to Vercel (Preview Deployment)
         if: github.ref == 'refs/heads/main'
