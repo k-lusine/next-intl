@@ -30,6 +30,7 @@ jobs:
         if: github.ref != 'refs/heads/main'
         run: |
              DEPLOYMENT_URL=$(vercel --token ${{secrets.VERCEL_TOKEN}}),
+             echo TEST,
              echo $DEPLOYMENT_URL
       - name: Deploy to Vercel (Preview Deployment)
         if: github.ref == 'refs/heads/main'
