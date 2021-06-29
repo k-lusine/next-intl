@@ -30,12 +30,8 @@ jobs:
         if: github.ref != 'refs/heads/main'
         run: |
              echo DEPLOYMENT_URL="$(vercel --token ${{secrets.VERCEL_TOKEN}})" >> $GITHUB_ENV
-             echo TEST
-             echo $DEPLOYMENT_URL
       - name: Deploy to Vercel (Preview Deployment)
         if: github.ref == 'refs/heads/main'
         run: vercel --prod --token ${{secrets.VERCEL_TOKEN}}
-      - name: Debug
-        run: echo $DEPLOYMENT_URL
       - name: Create check     
         run: curl --location --request POST 'https://api.github.com/repos/k-lusine/next-intl/check-runs' --header "Accept:application/vnd.github.v3+json" --header 'Content-Type:application/json' --user 'k-lusine:${{secrets.GITHUB_TOKEN}}' --data-raw '{"name":"Preview Url", "status":"completed", "conclusion":"success", "head_sha":"${{github.sha}}","output":{"title":"Link is in the details","summary":"[Deployment Link]( ${{ env.DEPLOYMENT_URL }})"} }'
