@@ -28,7 +28,7 @@ jobs:
         run: yarn global add vercel
       - name: Deploy to Vercel (Production Deployment)
         if: github.ref != 'refs/heads/main'
-        run: echo DEPLOYMENT_URL="$(vercel --prod --token ${{secrets.VERCEL_TOKEN}} --env ENV_1=test --env ENV_2=test1 --env ENV_3=test2)" >> $GITHUB_ENV
+        run: DEPLOYMENT_URL="$(vercel --prod --token ${{secrets.VERCEL_TOKEN}} --env ENV_1=test --env ENV_2=test1 --env ENV_3=test2)" >> $GITHUB_ENV
       - name: Deploy to Vercel (Preview Deployment)
         if: github.ref == 'refs/heads/main'
         run: vercel --token ${{secrets.VERCEL_TOKEN}}
