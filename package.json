@@ -9,7 +9,7 @@
     "start": "next start",
     "fetch:translations": "envsub  --env-file .env.local ./.phrase-template.yml ./.phrase.yml && phrase pull",
     "fetch:translations:ci": "envsub ./.phrase-template.yml ./.phrase.yml && phrase pull",
-    "build": "yarn setup && next build"
+    "build": "next build"
   },
   "dependencies": {
     "envsub": "^4.0.7",

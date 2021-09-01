@@ -1,0 +1,28 @@
+{
+  "general": {
+    "back": "Վերադառնալ",
+    "cancel": "Չեղարկել ",
+    "confirm": "Վստա՞հ եք",
+    "destroy": "Ջնջել ",
+    "new": "Նոր"
+  },
+  "hello": "Ողջույն Բոլորին",
+  "layouts": {
+    "application": {
+      "about": "Մեր մասին",
+      "app_store": "App Store",
+      "imprint": "Իմպրինտ ",
+      "logout": "Դուրս գալ",
+      "preview": "Նախադիտում ",
+      "sign_in": "Մուտք"
+    }
+  },
+  "routes": {
+    "about": "mer-masin",
+    "nested": {
+      "page": "nerdrvac/ej"
+    },
+    "profile": "im-ejy",
+    "readme": "karda-indz"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "general": {
+    "back": "Atrás ",
+    "cancel": "Cancelar ",
+    "confirm": "Acceptar",
+    "destroy": "Eliminar "
+  },
+  "hello": "Hola Mundo!",
+  "layouts": {
+    "application": {
+      "about": "Sobre nosotros",
+      "app_store": "test"
+    }
+  },
+  "routes": {
+    "about": "sobre-nosotros",
+    "home": "casa",
+    "profile": "mi-cuenta"
+  }
+}
