@@ -1,30 +1,30 @@
-# This is a basic workflow to help you get started with Actions
+# # This is a basic workflow to help you get started with Actions
 
-name: Checkout 
+# name: Checkout 
 
-# Controls when the action will run. 
-on:
-  push:
-  workflow_dispatch:
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+# # Controls when the action will run. 
+# on:
+#   push:
+#   workflow_dispatch:
+# # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# jobs:
+#   # This workflow contains a single job called "build"
+#   build:
+#     # The type of runner that the job will run on
+#     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: true
-          # persist-credentials: false
-          ssh-key: ${{secrets.DEPLOY_SSH_KEY}}
-          ssh-known-hosts: ${{secrets.SSH_HOSTS}} 
-          ssh-strict: 'FALSE'
-      - name: Update submodules with latest hash
-        run: git submodule update --remote
-      - name: Install Vercel cli
-        run: yarn global add vercel
-      - name: Deploy to Vercel
-        run: vercel --token ${{secrets.VERCEL_TOKEN}}
+#     # Steps represent a sequence of tasks that will be executed as part of the job
+#     steps:
+#       - uses: actions/checkout@v2
+#         with:
+#           submodules: true
+#           # persist-credentials: false
+#           ssh-key: ${{secrets.DEPLOY_SSH_KEY}}
+#           ssh-known-hosts: ${{secrets.SSH_HOSTS}} 
+#           ssh-strict: 'FALSE'
+#       - name: Update submodules with latest hash
+#         run: git submodule update --remote
+#       - name: Install Vercel cli
+#         run: yarn global add vercel
+#       - name: Deploy to Vercel
+#         run: vercel --token ${{secrets.VERCEL_TOKEN}}

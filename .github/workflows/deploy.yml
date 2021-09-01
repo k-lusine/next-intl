@@ -1,0 +1,46 @@
+name: Deploy to Vercel 
+
+on:
+  push:
+    # So the job can manually be triggered
+  workflow_dispatch: 
+jobs:
+  # This workflow contains a single job called "deploy"
+  deploy:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    env:
+      NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+          ssh-key: ${{secrets.SSH_PRIVATE_KEY}}
+          ssh-known-hosts: ${{secrets.SSH_KNOWN_HOSTS}} 
+          ssh-strict: 'FALSE'
+      - name: Update submodules with latest hash
+        run: git submodule update --remote
+      # - name: Prepare translation files
+      #   run: yarn convertToICU
+      - name: Install Global Dependencies cli
+        run: yarn global add vercel
+      # - name: Create Vercel Config File
+      #   run: |
+      #        mkdir .vercel
+      #        envsubst < "configs/.vercel-template.json" > ".vercel/project.json"
+      #   env: 
+      #     VERCEL_ORG_ID: ${{secrets.VERCEL_ORG_ID}}
+      #     VERCEL_PROJECT_ID: ${{secrets.VERCEL_PROJECT_ID}}
+      - name: Deploy to Vercel (Production Deployment)
+        if: github.ref == 'refs/heads/master'
+        run: |
+             DEPLOYMENT_RESULT="$(vercel --confirm --prod --token ${{secrets.VERCEL_TOKEN}})"
+             echo "PREVIEW_URL=$DEPLOYMENT_RESULT" >> $GITHUB_ENV
+      - name: Deploy to Vercel (Preview Deployment)
+        if: github.ref != 'refs/heads/master'
+        run: |
+             DEPLOYMENT_RESULT="$(vercel --confirm --token ${{secrets.VERCEL_TOKEN}})"
+             echo "PREVIEW_URL=$DEPLOYMENT_RESULT" >> $GITHUB_ENV
+      - name: Set Alias
+        run: vercel alias set ${{env.PREVIEW_URL}} test-1234-vercel.vercel.app
