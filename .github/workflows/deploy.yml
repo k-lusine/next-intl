@@ -16,8 +16,9 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: true
-          ssh-key: ${{secrets.SSH_PRIVATE_KEY}}
-          ssh-known-hosts: ${{secrets.SSH_KNOWN_HOSTS}} 
+#           # persist-credentials: false
+          ssh-key: ${{secrets.DEPLOY_SSH_KEY}}
+          ssh-known-hosts: ${{secrets.SSH_HOSTS}} 
           ssh-strict: 'FALSE'
       - name: Update submodules with latest hash
         run: git submodule update --remote
