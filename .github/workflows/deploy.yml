@@ -44,4 +44,4 @@ jobs:
              DEPLOYMENT_RESULT="$(vercel --confirm --token ${{secrets.VERCEL_TOKEN}})"
              echo "PREVIEW_URL=$DEPLOYMENT_RESULT" >> $GITHUB_ENV
       - name: Set Alias
-        run: vercel --token alias set ${{env.PREVIEW_URL}} test-1234-vercel.vercel.app
+        run: vercel alias set --token ${{env.PREVIEW_URL}} test-1234-vercel.vercel.app
