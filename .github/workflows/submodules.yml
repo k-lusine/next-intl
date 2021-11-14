@@ -23,6 +23,8 @@ jobs:
           ssh-key: ${{secrets.DEPLOY_SSH_KEY}}
           ssh-known-hosts: ${{secrets.SSH_HOSTS}} 
           ssh-strict: 'FALSE'
+      - run: 'echo "field: ${{ github.event.client_payload.foo }}"'
+      - run: 'echo "payload: ${{ toJson(github.event.client_payload) }}"'
       - name: Update submodules with latest hash
         run: git submodule update --remote
       - name: Install Vercel cli
