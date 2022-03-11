@@ -2,7 +2,7 @@ const locales = ['es', 'hy', 'ru']
 const defaultLocale = 'en-US';
 let routes = [];
 const defaultRoutes = require(`./data/phrases/${defaultLocale}.json`).routes;
-
+console.log(123);
 locales.forEach(locale => {
   const localeRoutes = require(`./data/phrases/${locale}.json`).routes;
   const mappedRoutes = Object.entries(localeRoutes).map(
