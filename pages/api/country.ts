@@ -15,6 +15,7 @@ const payload = JSON.parse(req.body?.payload);
 debugger;
 const git: SimpleGit = simpleGit(options);
 console.log('My console.log');
+console.log('My console.log1');
 
   if (payload?.ref === 'refs/heads/main') {
       await git.pull('origin', 'main');
